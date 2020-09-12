@@ -8,6 +8,7 @@ var FRICTION = 0.9
 var RESISTANCE = 0.9
 var forces_vector = Vector2.ZERO
 onready var sprite = $Sprite
+onready var animationplayer = $AnimationPlayer
 
 func _physics_process(delta):
 	
@@ -34,7 +35,7 @@ func jump():
 		if Input.is_action_just_pressed("ui_up"):
 			forces_vector.y -= JUMP_FORCE
 	if forces_vector.y < 0 and Input.is_action_just_released("ui_up"):
-		forces_vector.y = 0
+		forces_vector.y *= 0.3
 
 func friction():
 	if is_on_floor():
@@ -47,12 +48,12 @@ func gravity():
 
 func texture():
 	if not is_on_floor():
-		sprite.frame = 1
+		animationplayer.play("Fall")
 	else:
 		if forces_vector.x != 0:
-			sprite.frame = 2
+			animationplayer.play("Run")
 		else:
-			sprite.frame = 0
+			animationplayer.play("Idle")
 
 func respawn():
 	if position.y > get_viewport_rect().end.y:
