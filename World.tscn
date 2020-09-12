@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Three Eye Sprite.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Two Eye Sprite.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Four Eye Sprite.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 117.35, 10 )
@@ -27,24 +28,30 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource( 5 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 227.382, 63.4654 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 305.51, 63.3853 )
+position = Vector2( 257.942, 63.3853 )
 
 [node name="Sprite" parent="Player2" index="0"]
 texture = ExtResource( 3 )
 frame = 2
 
 [node name="Player3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 264.081, 62.9042 )
+position = Vector2( 290.838, 63.4988 )
 
 [node name="Sprite" parent="Player3" index="0"]
 texture = ExtResource( 2 )
 
-[editable path="Player"]
+[node name="Player4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 322.87, 64.8118 )
+
+[node name="Sprite" parent="Player4" index="0"]
+texture = ExtResource( 4 )
 
 [editable path="Player2"]
 
 [editable path="Player3"]
+
+[editable path="Player4"]
