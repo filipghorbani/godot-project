@@ -3,7 +3,7 @@ extends KinematicBody2D
 var SPEED = 100
 var ACC = 500
 var GRAVITY = 8
-var JUMP_FORCE = 250
+var JUMP_FORCE = 260
 var FRICTION = 1
 var RESISTANCE = 1
 var forces_vector = Vector2.ZERO
@@ -32,10 +32,10 @@ func flip():
 func jump():
 	if is_on_floor():
 		forces_vector.y = 0
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_pressed("ui_up"):
 			forces_vector.y -= JUMP_FORCE
 	if forces_vector.y < 0 and Input.is_action_just_released("ui_up"):
-		forces_vector.y *= 0.3
+		forces_vector.y *= 0.5
 
 func friction():
 	if is_on_floor():
