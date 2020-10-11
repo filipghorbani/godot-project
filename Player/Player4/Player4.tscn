@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/One Eye sprite.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player4/Player4.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Four Eye Sprite.png" type="Texture" id=2]
 [ext_resource path="res://Assets/hp_bar.png" type="Texture" id=3]
 [ext_resource path="res://Assets/hp_bar_dmg.png" type="Texture" id=4]
 

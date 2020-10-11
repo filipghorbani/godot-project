@@ -55,7 +55,7 @@ func jump():
 		if Input.is_action_just_pressed("ui_up_2") and jumps > 0:
 			jumps -= 1
 			forces_vector.y = min(forces_vector.y - JUMP_FORCE, -JUMP_FORCE)
-	if forces_vector.y < 0 and Input.is_action_just_released("ui_up"):
+	if forces_vector.y < 0 and Input.is_action_just_released("ui_up_2"):
 		forces_vector.y *= 0.5
 
 func friction():

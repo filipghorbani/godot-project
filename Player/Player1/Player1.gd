@@ -39,7 +39,7 @@ func _physics_process(delta):
 	forces_vector = move_and_slide(forces_vector,Vector2(0,-1))
 
 func run():
-	forces_vector.x = Input.get_action_strength("ui_right_2")*SPEED - Input.get_action_strength("ui_left_2")*SPEED
+	forces_vector.x = Input.get_action_strength("ui_right")*SPEED - Input.get_action_strength("ui_left")*SPEED
 
 func flip():
 	if forces_vector.x != 0:
@@ -49,10 +49,10 @@ func jump():
 	if is_on_floor():
 		jumps = 1
 		forces_vector.y = 0
-		if Input.is_action_just_pressed("ui_up_2"):
+		if Input.is_action_just_pressed("ui_up"):
 			forces_vector.y -= JUMP_FORCE
 	else: 
-		if Input.is_action_just_pressed("ui_up_2") and jumps > 0:
+		if Input.is_action_just_pressed("ui_up") and jumps > 0:
 			jumps -= 1
 			forces_vector.y = min(forces_vector.y - JUMP_FORCE, -JUMP_FORCE)
 	if forces_vector.y < 0 and Input.is_action_just_released("ui_up"):
@@ -98,7 +98,7 @@ func respawn():
 	hp_bar.value = MAX_HP
 		
 func fire():
-	if Input.is_action_pressed("ui_accept_2") and can_fire:
+	if Input.is_action_pressed("ui_accept") and can_fire:
 		var bullet_instance = bullet.instance()
 		var dir = -1 if sprite.flip_h else 1
 		var pos = get_global_position()
