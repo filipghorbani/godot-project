@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 export var player_name = ""
+export var player_id = ""
+var spawn = Vector2.ZERO
 var SPEED = 100
 var ACC = 500
 var O_GRAVITY = 8
@@ -24,6 +26,12 @@ var bullet = preload("res://Player/Bullet.tscn")
 func _ready():
 	hp_bar.max_value = MAX_HP
 	hp_bar.value = MAX_HP
+	sprite.texture = load("res://Assets/Player"+str(player_id)+"Sprite.png")
+	spawn = position
+	
+func init(id, name):
+	player_id = str(id)
+	player_name = str(name)
 	
 func _physics_process(delta):
 	
@@ -39,7 +47,7 @@ func _physics_process(delta):
 	forces_vector = move_and_slide(forces_vector,Vector2(0,-1))
 
 func run():
-	forces_vector.x = Input.get_action_strength("ui_right_2")*SPEED - Input.get_action_strength("ui_left_2")*SPEED
+	forces_vector.x = Input.get_action_strength("ui_right_" + player_id)*SPEED - Input.get_action_strength("ui_left_" + player_id)*SPEED
 
 func flip():
 	if forces_vector.x != 0:
@@ -49,13 +57,13 @@ func jump():
 	if is_on_floor():
 		jumps = 1
 		forces_vector.y = 0
-		if Input.is_action_just_pressed("ui_up_2"):
+		if Input.is_action_just_pressed("ui_up_" + player_id):
 			forces_vector.y -= JUMP_FORCE
 	else: 
-		if Input.is_action_just_pressed("ui_up_2") and jumps > 0:
+		if Input.is_action_just_pressed("ui_up_" + player_id) and jumps > 0:
 			jumps -= 1
 			forces_vector.y = min(forces_vector.y - JUMP_FORCE, -JUMP_FORCE)
-	if forces_vector.y < 0 and Input.is_action_just_released("ui_up"):
+	if forces_vector.y < 0 and Input.is_action_just_released("ui_up_" + player_id):
 		forces_vector.y *= 0.5
 
 func friction():
@@ -93,12 +101,11 @@ func check_bounds():
 		
 func respawn():
 	forces_vector.y = GRAVITY
-	position.x = get_viewport_rect().end.x/2
-	position.y = get_viewport_rect().end.y/10
+	position = spawn
 	hp_bar.value = MAX_HP
 		
 func fire():
-	if Input.is_action_pressed("ui_accept_2") and can_fire:
+	if Input.is_action_pressed("ui_accept_" + player_id) and can_fire:
 		var bullet_instance = bullet.instance()
 		var dir = -1 if sprite.flip_h else 1
 		var pos = get_global_position()

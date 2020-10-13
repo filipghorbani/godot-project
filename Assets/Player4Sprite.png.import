@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Four Eye Sprite.png-55bfece028dbddb65b5afcd1818b6b49.stex"
+path="res://.import/Player4Sprite.png-86b162d0d0487715e2d3e554086ce00c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Four Eye Sprite.png"
-dest_files=[ "res://.import/Four Eye Sprite.png-55bfece028dbddb65b5afcd1818b6b49.stex" ]
+source_file="res://Assets/Player4Sprite.png"
+dest_files=[ "res://.import/Player4Sprite.png-86b162d0d0487715e2d3e554086ce00c.stex" ]
 
 [params]
 
